@@ -16,7 +16,11 @@ lab_start: ## Start the Kubewarden lab environment, if already created
 lab_stop: ## Stop the Kubewarden lab environment. Restart with lab_start
 	@k3d cluster stop kubewarden-lab
 
-.PHONY: reset_kubewarden
+.PHONY: lab_status
+lab_status: ## Status of the Kubewarden lab environment
+	@k3d cluster list kubewarden-lab
+
+.PHONY: lab_reset
 lab_reset: lab_delete lab_create ## Delete and recreate a Kubewarden lab environment
 	
 .PHONY: config_standalone
